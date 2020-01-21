@@ -1,8 +1,25 @@
-﻿@{
+﻿@using AWS_Modas.Models.Objects
+@model IEnumerable<Event>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h3 class="display-3">Enjoy this list of fake events</h3>
+    <table class="container table table-bordered">
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Location</th>
+        </tr>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>@($"{e.TimeStamp: ddd, MMM dd, yyyy}")</td>
+                <td>@($"{e.TimeStamp: hh:mm tt}") </td>
+                <td>@e.Location.Name</td>
+            </tr>
+        }
+    </table>
 </div>
