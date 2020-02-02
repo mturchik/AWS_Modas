@@ -3,10 +3,15 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+@ViewData.TryGetValue("Page", out var pageParam)
+@int.TryParse(pageParam.ToString(), out var page)
+
+@ViewData.TryGetValue("LastPage", out var lastPageParam)
+@int.TryParse(lastPageParam.ToString(), out var lastPage)
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <h3 class="display-3">Enjoy this list of fake events</h3>
+    <h3 class="display-3">Enjoy this list of 'real' events</h3>
     <table class="container table table-bordered">
         <tr>
             <th>Date</th>
@@ -22,4 +27,48 @@
             </tr>
         }
     </table>
+    <nav>
+        <ul class="pagination justify-content-center">
+            @if ((int) page == 1)
+            {
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link" asp-route="/$1">1</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-route="/$Page@((int) page - 1)" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" asp-route="/$Page@((int) page - 1)">@((int) page - 1)</a>
+                </li>
+            }
+            <li class="page-item">
+                <a class="page-link" asp-route="/$Page@((int) page)">@((int) page)</a>
+            </li>
+            @if ((int) page == (int) lastPage)
+            {
+                <li class="page-item">
+                    <a class="page-link disabled">@((int) page + 1)</a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link">Next</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-route="/$@((int) page + 1)">@((int) page + 1)</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" asp-route="/$@((int) page + 1)">Next</a>
+                </li>
+            }
+        </ul>
+
+    </nav>
 </div>
