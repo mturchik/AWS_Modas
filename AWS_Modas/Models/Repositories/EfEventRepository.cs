@@ -1,7 +1,6 @@
-﻿using System.Linq;
-using AWS_Modas.Models.Database;
+﻿using AWS_Modas.Models.Database;
 using AWS_Modas.Models.Objects;
-using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace AWS_Modas.Models.Repositories
 {

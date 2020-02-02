@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AWS_Modas.Models.Database;
 using AWS_Modas.Models.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -56,10 +51,10 @@ namespace AWS_Modas
                 endpoints.MapControllerRoute(
                     name: "pagination",
                     pattern: "${page}",
-                    defaults: new { Controller = "Home", action = "Index" });
+                    defaults: new {Controller = "Home", action = "Index"});
             });
 
-            //SeedData.EnsurePopulated(app);
+            SeedData.EnsurePopulated(app);
         }
     }
 }

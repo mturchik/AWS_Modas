@@ -1,12 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AWS_Modas.Models.Objects;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace AWS_Modas
 {
@@ -18,8 +11,8 @@ namespace AWS_Modas
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args).
-                 ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); }).
-                 UseDefaultServiceProvider(options => options.ValidateScopes = false);
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); })
+                .UseDefaultServiceProvider(options => options.ValidateScopes = false);
     }
 }
