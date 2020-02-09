@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using AWS_Modas.Models.Database;
+﻿using AWS_Modas.Models.Database;
 using AWS_Modas.Models.Objects;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AWS_Modas
 {
@@ -33,7 +32,7 @@ namespace AWS_Modas
                     eventList.Add(new Event
                     {
                         TimeStamp = new DateTime(startDate.Year, startDate.Month, startDate.Day,
-                                                 rand.Next(1, 24), rand.Next(0, 60), rand.Next(0, 60)),
+                            rand.Next(1, 24), rand.Next(0, 60), rand.Next(0, 60)),
                         Flagged = rand.Next(0, 2) == 1,
                         Location = locList.ElementAt(rand.Next(0, 3))
                     });
