@@ -7,5 +7,8 @@ namespace AWS_Modas.Models.Repositories
     {
         IQueryable<Event> Events { get; }
         IQueryable<Location> Locations { get; }
+        Event AddEvent(Event evt);
+        Event UpdateEvent(Event source);
+        void DeleteEvent(int eventId);
     }
 }

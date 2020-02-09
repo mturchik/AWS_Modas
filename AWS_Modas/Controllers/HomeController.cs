@@ -27,8 +27,8 @@ namespace AWS_Modas.Controllers
         public IActionResult Index(int page = 1)
         {
             ViewData.Add("Page", page);
-            var lPage = _eventRepo.Events.Count() / (decimal) PageSize;
-            ViewData.Add("LastPage", decimal.Ceiling(lPage));
+            var lPage = decimal.Ceiling(_eventRepo.Events.Count() / (decimal) PageSize);
+            ViewData.Add("LastPage", (int) lPage);
             return View(_eventRepo.Events.Include(e => e.Location).
                                    OrderBy(e => e.TimeStamp).
                                    Skip((page - 1) * PageSize).Take(PageSize));
