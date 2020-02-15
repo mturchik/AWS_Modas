@@ -19,7 +19,8 @@
                 <td>
                     <i class="fa fa-flag-o"></i>
                 </td>
-                <td>@($"{e.TimeStamp: ddd, MMM dd, yyyy}")</td>
+                <td class="d-md-none">@(e.TimeStamp?.ToShortDateString())</td>
+                <td class="d-none d-md-block">@(e.TimeStamp?.ToLongDateString())</td>
                 <td>@($"{e.TimeStamp: hh:mm tt}") </td>
                 <td>@e.Location.Name</td>
             </tr>
@@ -27,19 +28,19 @@
     </table>
     <nav>
         <ul class="pagination justify-content-center">
-            @if ((int)ViewData["page"] == 1)
+            @if ((int) ViewData["page"] == 1)
             {
                 <li class="page-item disabled">
                     <a class="page-link" asp-action="Index" asp-route-page="1">First</a>
                 </li>
             }
-            else if ((int)ViewData["page"] - 1 == 1)
+            else if ((int) ViewData["page"] - 1 == 1)
             {
                 <li class="page-item">
                     <a class="page-link" asp-action="Index" asp-route-page="1">First</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" asp-action="Index" asp-route-page="@((int) ViewData["page"] - 1)">@((int)ViewData["page"] - 1)</a>
+                    <a class="page-link" asp-action="Index" asp-route-page="@((int) ViewData["page"] - 1)">@((int) ViewData["page"] - 1)</a>
                 </li>
             }
             else
@@ -48,25 +49,25 @@
                     <a class="page-link" asp-action="Index" asp-route-page="1">First</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" asp-action="Index" asp-route-page="@((int) ViewData["page"] - 2)">@((int)ViewData["page"] - 2)</a>
+                    <a class="page-link" asp-action="Index" asp-route-page="@((int) ViewData["page"] - 2)">@((int) ViewData["page"] - 2)</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" asp-action="Index" asp-route-page="@((int) ViewData["page"] - 1)">@((int)ViewData["page"] - 1)</a>
+                    <a class="page-link" asp-action="Index" asp-route-page="@((int) ViewData["page"] - 1)">@((int) ViewData["page"] - 1)</a>
                 </li>
             }
             <li class="page-item disabled">
                 <a class="page-link">@ViewData["page"]</a>
             </li>
-            @if ((int)ViewData["page"] == (int)ViewData["lastPage"])
+            @if ((int) ViewData["page"] == (int) ViewData["lastPage"])
             {
                 <li class="page-item disabled">
                     <a class="page-link" asp-action="Index" asp-route-page="@ViewData["lastPage"]">Last</a>
                 </li>
             }
-            else if ((int)ViewData["page"] + 1 == (int)ViewData["lastPage"])
+            else if ((int) ViewData["page"] + 1 == (int) ViewData["lastPage"])
             {
                 <li class="page-item">
-                    <a class="page-link" asp-action="Index" asp-route-page="@((int) ViewData["page"] + 1)">@((int)ViewData["page"] + 1)</a>
+                    <a class="page-link" asp-action="Index" asp-route-page="@((int) ViewData["page"] + 1)">@((int) ViewData["page"] + 1)</a>
                 </li>
                 <li class="page-item">
                     <a class="page-link" asp-action="Index" asp-route-page="@ViewData["lastPage"]">Last</a>
@@ -75,10 +76,10 @@
             else
             {
                 <li class="page-item">
-                    <a class="page-link" asp-action="Index" asp-route-page="@((int) ViewData["page"] + 1)">@((int)ViewData["page"] + 1)</a>
+                    <a class="page-link" asp-action="Index" asp-route-page="@((int) ViewData["page"] + 1)">@((int) ViewData["page"] + 1)</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" asp-action="Index" asp-route-page="@((int) ViewData["page"] + 2)">@((int)ViewData["page"] + 2)</a>
+                    <a class="page-link" asp-action="Index" asp-route-page="@((int) ViewData["page"] + 2)">@((int) ViewData["page"] + 2)</a>
                 </li>
                 <li class="page-item">
                     <a class="page-link" asp-action="Index" asp-route-page="@ViewData["lastPage"]">Last</a>
@@ -102,6 +103,6 @@
                     i.target.classList.add('fa-flag');
                 }
             });
-
+        \
     </script>
 }
